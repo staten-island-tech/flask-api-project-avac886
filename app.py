@@ -14,3 +14,5 @@ def index():
         url = character['url']
         parts = url.strip("/").split("/")
         id = parts[-1]
+
+        image_url = f""
