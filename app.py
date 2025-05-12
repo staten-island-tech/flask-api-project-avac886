@@ -14,7 +14,11 @@ hpHouses = [
 def home():
     return render_template("index.html", hpHouses=hpHouses)
 
-@app.route("/gryffindor")
+""" @app.route("/house:house") """
+
+
+
+""" @app.route("/gryffindor")
 def gryffindor():
     response = requests.get("https://hp-api.onrender.com/api/characters/house/gryffindor")
     data = response.json()
@@ -28,9 +32,9 @@ def gryffindor():
             'id': id,
             'image': image_url
         })
-    return render_template("gryffindors.html", gryffindors=gryffindors)
+    return render_template("gryffindors.html", gryffindors=gryffindors) """
 
-@app.route("/gryffindor/<int:id>")
+""" @app.route("/gryffindor/<int:id>")
 def gryffindor_detail(id):
     response = requests.get("https://hp-api.onrender.com/api/characters/house/gryffindor{id}")
     data = response.json()
@@ -55,9 +59,9 @@ def gryffindor_detail(id):
         'hairColor': hairColor,
         'wandMaterial': wandMaterial,
         'patronus': patronus
-    })
+    }) """
 
-@app.route("/hufflepuff")
+""" @app.route("/hufflepuff")
 def hufflepuff():
     response = requests.get("https://hp-api.onrender.com/api/characters/house/hufflepuff")
     data = response.json()
@@ -71,9 +75,9 @@ def hufflepuff():
             'id': id,
             'image': image_url
         })
-    return render_template("hufflepuffs.html", hufflepuffs=hufflepuffs)
+    return render_template("hufflepuffs.html", hufflepuffs=hufflepuffs) """
     
-@app.route("/huffeluff/<int:id>")
+""" @app.route("/hufflepuff/<int:id>")
 def hufflepuff_detail(id):
     response = requests.get("https://hp-api.onrender.com/api/characters/house/hufflepuff{id}")
     data = response.json()
@@ -98,11 +102,11 @@ def hufflepuff_detail(id):
         'hairColor': hairColor,
         'wandMaterial': wandMaterial,
         'patronus': patronus
-    })
+    }) """
 
-@app.route("/ravenclaw")
+""" @app.route("/ravenclaw")
 def ravenclaw():
-    response = response.get("https://hp-api.onrender.com/api/characters/house/ravenclaw")
+    response = response.get("https://hp-api.onrender.com/api/characters/house/:house")
     data = response.json
     ravenclaw_list = data['results']
     ravenclaws = []
@@ -114,9 +118,9 @@ def ravenclaw():
             'id': id,
             'image': image_url
         })
-    return render_template("ravenclaws.html", ravenclaws=ravenclaws)
+    return render_template("ravenclaws.html", ravenclaws=ravenclaws) """
 
-@app.route("/ravenclaw/<int:id>")
+""" @app.route("/ravenclaw/<int:id>")
 def ravenclaw_detail(id):
     response = response.get(f"https://hp-api.onrender.com/api/characters/house/ravenclaw{id}")
     data = response.json()
@@ -141,9 +145,9 @@ def ravenclaw_detail(id):
         'hairColor': hairColor,
         'wandMaterial': wandMaterial,
         'patronus': patronus
-    })
+    }) """
 
-@app.route("/slytherin")
+""" @app.route("/slytherin")
 def slytherin():
     response = response.get("https://hp-api.onrender.com/api/characters/house/slytherin")
     data = response.json()
@@ -157,9 +161,9 @@ def slytherin():
             'id': id,
             'image': image_url
         })
-    return render_template("slytherins.html", slytherins=slytherins)
+    return render_template("slytherins.html", slytherins=slytherins) """
 
-@app.route("/slytherin/<int:id>")
+""" @app.route("/slytherin/<int:id>")
 def slytherin_detail(id):
     response = requests.get("https://hp-api.onrender.com/api/characters/house/slytherin{id}")
     data = response.json()
@@ -184,7 +188,7 @@ def slytherin_detail(id):
         'hairColor': hairColor,
         'wandMaterial': wandMaterial,
         'patronus': patronus
-    })
+    }) """
 
-if __name__ == '__main__':
-    app.run(debug=True)
+""" if __name__ == '__main__':
+    app.run(debug=True) """
