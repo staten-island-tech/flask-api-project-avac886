@@ -48,6 +48,17 @@ def gryffindor_detail(id):
 
 @app.route("/hufflepuff")
 def hufflepuff():
+    response = requests.get("https://hp-api.onrender.com/api/characters/house/hufflepuff")
+    data = response.json()
+    hufflepuff_list = data['results']
+    hufflepuffs = []
+
+    for hufflepuff in hufflepuff_list:
+        image_url = f"https://ik.imagekit.io/hpapi/{id}.jpg"
+        hufflepuffs.append({
+            
+        })
+
     
 
 if __name__ == '__main__':
