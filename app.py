@@ -3,16 +3,52 @@ import requests
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-    response = requests.get("https://hp-api.onrender.com/api/characters")
+@app.route("/gryffindor")
+def gryffindor():
+    response = requests.get("https://hp-api.onrender.com/api/characters/house/gryffindor")
     data = response.json()
-    harry_potter_list = data['results']
-    characters = []
+    gryffindor_list = data['results']
+    gryffindors = []
 
-    for character in harry_potter_list:
-        url = character['url']
-        parts = url.strip("/").split("/")
-        id = parts[-1]
+    for gryffindor in gryffindor_list:
+        image_url = f"https://ik.imagekit.io/hpapi/{id}.jpg"
+        gryffindors.append({
+            'name': gryffindor['name'],
+            'id': id,
+            'image': image_url
+        })
+    return render_template("gryffindors.html", gryffindors=gryffindors)
 
-        image_url = f""
+@app.route("/gryffindor/<int:id>")
+def gryffindor_detail(id):
+    response = requests.get("https://hp-api.onrender.com/api/characters/house/gryffindor{id}")
+    data = response.json()
+
+    name = data.get('name')
+    species = data.get('species')
+    dateOfBirth = data.get('dateOfBirth')
+    ancestry = data.get('ancestry')
+    eyeColor = data.get('eyeColor')
+    hairColor = data.get('hairColor')
+    wandMaterial = [material['wand'] for material in data['wand']]
+    patronus = data.get('patronus')
+    image_url = f"https://ik.imagekit.io/hpapi/{id}.jpg"
+
+    return render_template("gryffindor.html", gryffindor ={
+        'name': name,
+        'id': id,
+        'species': species,
+        'dateOfBirth': dateOfBirth,
+        'ancestry': ancestry,
+        'eyeColor': eyeColor,
+        'hairColor': hairColor,
+        'wandMaterial': wandMaterial,
+        'patronus': patronus
+    })
+
+@app.route("/hufflepuff")
+def hufflepuff():
+    
+
+if __name__ == '__main__':
+    app.run(debug=True)
