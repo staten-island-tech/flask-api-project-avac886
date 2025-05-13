@@ -14,11 +14,10 @@ hpHouses = [
 def home():
     return render_template("index.html", hpHouses=hpHouses)
 
-@app.route("/house/<house>")
-def house(house):
+@app.route("/house/<string:name>")
+def house(name):
     for house in hpHouses:
-        print(house['house'])
-        response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{house['house']}")
+        response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{name}")
         data = response.json()
         house_list = data['results']
         house_members = []
@@ -32,11 +31,12 @@ def house(house):
             })
         return render_template("houses.html", house_members=house_members)
 
-@app.route("/house/<house>/<id>")
+""" @app.route("/house/<house>/<id>")
+ """
+@app.route("/house/<string:name>/<string:id>")
 def house_detail(id):
     for house in hpHouses:
-        print(house['house'])
-        response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{house['house{id}']}")
+        response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{id}")
         data = response.json()
 
         name = data.get('name')
