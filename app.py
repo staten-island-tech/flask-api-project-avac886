@@ -14,10 +14,71 @@ hpHouses = [
 def home():
     return render_template("index.html", hpHouses=hpHouses)
 
+@app.route("/house/<house>")
+def house(house):
+    for house in hpHouses:
+        print(house['house'])
+        response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{house['house']}")
+        data = response.json()
+        house_list = data['results']
+        house_members = []
 
+        for member in house_list:
+            image_url = f"https://ik.imagekit.io/hpapi/{id}.jpg"
+            house_members.append({
+                'name': member['name'],
+                'id': id,
+                'image': image_url
+            })
+        return render_template("houses.html", house_members=house_members)
+
+@app.route("/house/<house>/<id>")
+def house_detail(id):
+    for house in hpHouses:
+        print(house['house'])
+        response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{house['house{id}']}")
+        data = response.json()
+
+        name = data.get('name')
+        species = data.get('species')
+        dateOfBirth = data.get('dateOfBirth')
+        ancestry = data.get('ancestry')
+        eyeColor = data.get('eyeColor')
+        hairColor = data.get('hairColor')
+        wandMaterial = [material['wand'] for material in data['wand']]
+        patronus = data.get('patronus')
+        image_url = f"https://ik.imagekit.io/hpapi/{id}.jpg"
+
+        return render_template("house.html", house ={
+        'name': name,
+        'id': id,
+        'species': species,
+        'dateOfBirth': dateOfBirth,
+        'ancestry': ancestry,
+        'eyeColor': eyeColor,
+        'hairColor': hairColor,
+        'wandMaterial': wandMaterial,
+        'patronus': patronus,
+        'image': image_url
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 """ @app.route("/house:house") """
 
@@ -39,7 +100,7 @@ def gryffindor():
 
 """ @app.route("/gryffindor/<int:id>")
 def gryffindor_detail(id):
-    response = requests.get("https://hp-api.onrender.com/api/characters/house/gryffindor{id}")
+    response = requests.get("")
     data = response.json()
 
     name = data.get('name')
