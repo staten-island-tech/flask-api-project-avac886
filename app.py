@@ -31,9 +31,21 @@ def house(name):
             })
         return render_template("houses.html", house_members=house_members)
 
+# get from single house and then idividual character by doing character/id or character/name
+
+@app.route("/house/<string:name>/<id>")
+def house_detail(name, id):
+    for house in hpHouses:
+        response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{name}")
+        data = response.json()
+        house_list = data['results']
+        house_members = []
+        for member in house_list:
+            response = requests.get(f"https://hp-api.onrender.com/api/character/{id}")
+
 """ @app.route("/house/<house>/<id>")
  """
-@app.route("/house/<string:name>/<string:id>")
+""" @app.route("/house/<string:name>/<string:id>")
 def house_detail(id):
     for house in hpHouses:
         response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{id}")
@@ -60,7 +72,7 @@ def house_detail(id):
         'wandMaterial': wandMaterial,
         'patronus': patronus,
         'image': image_url
-    })
+    }) """
 
 if __name__ == '__main__':
     app.run(debug=True)
