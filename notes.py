@@ -9,3 +9,8 @@ def divide(a,b):
 divide(10,0)
 
 #normally app wouldn't run but try except handles errors
+
+
+
+
+#blindy grabbing api and youre stupid
