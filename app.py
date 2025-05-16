@@ -42,6 +42,30 @@ def house_detail(name, id):
         house_members = []
         for member in house_list:
             response = requests.get(f"https://hp-api.onrender.com/api/character/{id}")
+            member = response.json()
+
+            name = member.get('name')
+            species = member.get('species')
+            dateOfBirth = member.get('dateOfBirth')
+            ancestry = member.get('ancestry')
+            eyeColor = member.get('eyeColor')
+            hairColor = member.get('hairColor')
+            wandMaterial = [material['wand'] for material in data['wand']]
+            patronus = member.get('patronus')
+            image_url = f"https://ik.imagekit.io/hpapi/{id}.jpg"
+
+            return render_template("house.html", house ={
+            'name': name,
+            'id': id,
+            'species': species,
+            'dateOfBirth': dateOfBirth,
+            'ancestry': ancestry,
+            'eyeColor': eyeColor,
+            'hairColor': hairColor,
+            'wandMaterial': wandMaterial,
+            'patronus': patronus,
+            'image': image_url
+        }) 
 
 """ @app.route("/house/<house>/<id>")
  """

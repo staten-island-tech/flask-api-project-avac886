@@ -1,0 +1,99 @@
+h1 {
+    text-align: center;
+}
+
+.houses {
+    display: grid;
+    grid-template-columns:max-content;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.gryffindor-card {
+    background-color: #540709;    
+}
+
+.griff-img {
+    max-width: 18rem;
+    width: 100%;
+    height: auto;
+}
+
+.griff-body {
+    text-align: center;
+    color: #ffffff;
+}
+
+.btn-griff {
+    background-color: #645220;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    color:#ffffff;
+}
+
+.hufflepuff-card {
+    background-color: #e19420;
+}
+
+.huff-img{
+    max-width: 18rem;
+    width: 100%;
+    height: auto;
+}
+
+.huff-body {
+    text-align: center;
+    color:#ffffff;
+}
+
+.btn-huff {
+    background-color: #372e29;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    color:#ffffff;
+}
+
+.ravenclaw-card {
+    background-color: #204674;
+}
+
+.raven-img{
+    max-width: 18rem;
+    width: 100%;
+    height: auto;
+}
+
+.raven-body {
+    text-align: center;
+    color:#ffffff;
+}
+
+.btn-raven {
+    background-color: #5D5D5D;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    color:#ffffff;
+}
+
+.slytherin-card {
+    background-color: #123a20;
+}
+
+.sly-img{
+    max-width: 18rem;
+    width: 100%;
+    height: auto;
+}
+
+.sly-body {
+    text-align: center;
+    color:#ffffff;
+}
+
+.btn-sly {
+    background-color: #5d5d5d;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    color:#ffffff;
+}
