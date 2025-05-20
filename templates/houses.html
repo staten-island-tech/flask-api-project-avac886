@@ -9,11 +9,10 @@
 <body>
     {% for member in house_list %}
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="{{member.image}}" class="person-image" alt="image">
             <div class="card-body">
-            <img src="{{member.image}}"
-            <h5 class="card-name">{{member.name}}</h5>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-name">{{member.name}}</h5>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
     {% endfor %}
