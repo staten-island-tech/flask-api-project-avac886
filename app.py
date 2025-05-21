@@ -14,7 +14,7 @@ hpHouses = [
 def home():
     return render_template("index.html", hpHouses=hpHouses)
 
-@app.route("/house/<string:name>")
+@app.route("/house/<string:name>") #don't like in href the house html, use the thing you put in your app py
 def house(name):
     for house in hpHouses:
         response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{name}")
