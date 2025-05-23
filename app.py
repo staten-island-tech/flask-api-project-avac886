@@ -17,10 +17,9 @@ def home():
 @app.route("/house/<string:name>") #don't like in href the house html, use the thing you put in your app py
 def house(name):
     response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{name}")
-    data = response.json()
-    members_list = data['results']
+    members_list = response.json()
     members = []
-
+ 
     for member in members_list:
         image_url = f"https://ik.imagekit.io/hpapi/{id}.jpg"
         members.append({
@@ -28,10 +27,13 @@ def house(name):
             'id': id,
             'image': image_url
         })
-    return render_template("houses.html", members=members)
+
+    print(members)
+    return render_template("members.html", members=members)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
 """ # get from single house and then idividual character by doing character/id or character/name
