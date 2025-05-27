@@ -23,6 +23,7 @@ def house(name):
     for member in members_list:
         members.append({
             'name': member['name'],
+            'id': member['id'],
             'image': member['image']
         })
 
@@ -34,20 +35,26 @@ def character(id):
     response = requests.get(f"https://hp-api.onrender.com/api/character/{id}")
     data = response.json()
 
-    name = data.get('name')
-    ancestry = data.get('ancestry')
-    birth_year = data.get('yearOfBirth')
-    wand = data.get('wand', {})
-    wand_description = f"{wand.get('wood', 'unknown')} wood, {wand.get('core', 'unknown')} core, {wand.get('lenght', 'unknown')} inches)"
+    for info in data:
+        name = info.get('name')
+        ancestry = info.get('ancestry')
+        birth_year = info.get('yearOfBirth')
+        patronus = info.get('patronus')
+        image = info['image']
+
+        wand = info.get('wand', {})
+        wand_description = f"{wand.get('wood', 'Unknown')} wood, {wand.get('core', 'Unknown')} core, {wand.get('length', 'Unknown')} inches"
+
+
     '''wand = [material['material']['name'] for material in data['wand']]'''
-    patronus = data.get('patronus')
 
     return render_template("character.html", character={
         'name': name,
         'ancestry': ancestry,
         'birth_year': birth_year,
         'wand': wand_description,
-        'patronus': patronus
+        'patronus': patronus,
+        'picture': image
     })
 
 if __name__ == '__main__':

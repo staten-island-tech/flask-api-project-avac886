@@ -8,6 +8,14 @@
 </head>
 <body>
     <h1>{{character.name}}</h1>
-
+    {% if character.picture %}
+        <img src="{{character.picture}}" class="picture" alt="image">
+    {% else %}
+        <img src="{{ url_for('static', filename='alternative.png')}}">
+    {% endif %}
+    <p>{{character.ancestry}}</p>
+    <p>{{character.birth_year}}</p>
+    <p>{{character.wand}}</p>
+    <p>{{character.patronus}}</p>
 </body>
 </html>
