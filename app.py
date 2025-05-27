@@ -19,22 +19,39 @@ def house(name):
     response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{name}")
     members_list = response.json()
     members = []
- 
+
     for member in members_list:
-        image_url = f"https://ik.imagekit.io/hpapi/{id}.jpg"
         members.append({
             'name': member['name'],
-            'id': id,
-            'image': image_url
+            'image': member['image']
         })
 
-    print(members)
+    '''print(members)'''
     return render_template("members.html", members=members)
+
+@app.route("/character/<string:id>")
+def character(id):
+    response = requests.get(f"https://hp-api.onrender.com/api/character/{id}")
+    data = response.json()
+
+    name = data.get('name')
+    ancestry = data.get('ancestry')
+    birth_year = data.get('yearOfBirth')
+    wand = data.get('wand', {})
+    wand_description = f"{wand.get('wood', 'unknown')} wood, {wand.get('core', 'unknown')} core, {wand.get('lenght', 'unknown')} inches)"
+    '''wand = [material['material']['name'] for material in data['wand']]'''
+    patronus = data.get('patronus')
+
+    return render_template("character.html", character={
+        'name': name,
+        'ancestry': ancestry,
+        'birth_year': birth_year,
+        'wand': wand_description,
+        'patronus': patronus
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
 
 """ # get from single house and then idividual character by doing character/id or character/name
 
