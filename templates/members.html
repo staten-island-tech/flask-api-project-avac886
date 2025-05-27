@@ -9,6 +9,11 @@
 </head>
 <body>
 
+    <form method="GET" action="{{ url_for('house', name=request.view_args['name']) }}">
+        <input type="text" name="search" placeholder="Search character by name..." value="{{ request.args.get('search', '') }}">
+        <button type="submit">Search</button>
+    </form>
+
     <div class="members">
         {% for member in members %}
             <div class="card" style="width: 18rem;">
@@ -24,6 +29,10 @@
             </div>
         {% endfor %}
     </div>
+
+    {% if not members %}
+    <p>No characters found.</p>
+    {% endif %}
 
 </body>
 </html>
