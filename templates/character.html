@@ -13,9 +13,9 @@
     {% else %}
         <img src="{{ url_for('static', filename='alternative.png')}}">
     {% endif %}
-    <p>{{character.ancestry}}</p>
-    <p>{{character.birth_year}}</p>
-    <p>{{character.wand}}</p>
-    <p>{{character.patronus}}</p>
+    <p>Ancestry: {{character.ancestry}}</p>
+    <p>Birth Year: {{character.birth_year}}</p>
+    <p>Wand Material: {{character.wand}}</p>
+    <p>Patronus: {{character.patronus}}</p>
 </body>
 </html>
