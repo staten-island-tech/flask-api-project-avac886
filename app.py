@@ -37,13 +37,26 @@ def character(id):
 
     for info in data:
         name = info.get('name')
+        image = info['image']
+        try:
+            ancestry = info.get('ancestry')
+            birth_year = info.get('yearOfBirth')
+            patronus = info.get('patronus')
+
+            wand = info.get('wand', {})
+            wand_description = f"{wand.get('wood', 'Unknown')} wood, {wand.get('core', 'Unknown')} core, {wand.get('length', 'Unknown')} inches"
+        except:
+            print("No data found")
+
+
+        '''name = info.get('name')
         ancestry = info.get('ancestry')
         birth_year = info.get('yearOfBirth')
         patronus = info.get('patronus')
         image = info['image']
 
         wand = info.get('wand', {})
-        wand_description = f"{wand.get('wood', 'Unknown')} wood, {wand.get('core', 'Unknown')} core, {wand.get('length', 'Unknown')} inches"
+        wand_description = f"{wand.get('wood', 'Unknown')} wood, {wand.get('core', 'Unknown')} core, {wand.get('length', 'Unknown')} inches" '''
 
 
     '''wand = [material['material']['name'] for material in data['wand']]'''
