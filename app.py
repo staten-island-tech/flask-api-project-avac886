@@ -16,7 +16,7 @@ def home():
 
 @app.route("/house/<string:name>") #don't like in href the house html, use the thing you put in your app py
 def house(name):
-    
+
     response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{name}")
     members_list = response.json()
     members = []
@@ -46,8 +46,8 @@ def character(id):
 
             wand = info.get('wand', {})
             wand_description = f"{wand.get('wood', 'Unknown')} wood, {wand.get('core', 'Unknown')} core, {wand.get('length', 'Unknown')} inches"
-        except:
-            print("No data found")
+        except Exception as e:
+            print(f"Error receiving data: {e}")
 
 
         '''name = info.get('name')
