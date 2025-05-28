@@ -16,12 +16,7 @@ def home():
 
 @app.route("/house/<string:name>") #don't like in href the house html, use the thing you put in your app py
 def house(name):
-
-    search_query = requests.args.get('search', '').lower()
-
-    response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{name}")
-    members_list = response.json()
-
+    
     response = requests.get(f"https://hp-api.onrender.com/api/characters/house/{name}")
     members_list = response.json()
     members = []
