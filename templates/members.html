@@ -12,15 +12,15 @@
     <div class="members">
         {% for member in members %}
             <div class="card" style="width: 18rem;">
-            {% if member.image %}
-                <img src="{{member.image}}" class="person-image" alt="image">
-            {% else %}
-                <img src="{{ url_for('static', filename='alternative.png')}}">
-            {% endif %}
-                <div class="card-body">
-                    <h5 class="card-name">{{member.name}}</h5>
-                    <a href="/character/{{member.id}}" class="button">See More</a>
-                </div>
+                {% if member.image %}
+                    <img src="{{member.image}}" class="person-image" alt="image">
+                {% else %}
+                    <img src="{{ url_for('static', filename='alternative.png')}}">
+                {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-name">{{member.name}}</h5>
+                        <a href="/character/{{member.id}}" class="button">See More</a>
+                    </div>
             </div>
         {% endfor %}
     </div>
